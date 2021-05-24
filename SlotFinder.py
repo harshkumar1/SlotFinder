@@ -23,7 +23,7 @@ class SlotFinder:
         self.DistrictName = districtName
         
     def isAvailable (self, centerId, hospitalName, pinCode, minAgeLimit, date, vaccine, availableCapacity, availableCapacityDose1, availableCapacityDose2):
-        if (minAgeLimit < 145):
+        if (minAgeLimit < 45):
             if ((self.Dose==1) and (availableCapacityDose1 > 0)):
                 availSlotObj = AvailableSlot(centerId, hospitalName, pinCode, minAgeLimit, date, vaccine, availableCapacity, availableCapacityDose1, availableCapacityDose2)
                 self.AvailableSlotsObj.append(availSlotObj)
@@ -32,8 +32,8 @@ class SlotFinder:
                 availSlotObj = AvailableSlot(centerId, hospitalName, pinCode, minAgeLimit, date, vaccine, availableCapacity, availableCapacityDose1, availableCapacityDose2)
                 self.AvailableSlotsObj.append(availSlotObj)
                 #self.AvailableSlots.append ({'name' :hospitalName, 'pincode' :pinCode, 'date' :date, 'min_age_limit' :minAgeLimit, 'available_capacity' :availableCapacity, 'available_capacity_dose1': availableCapacityDose1, 'available_capacity_dose2': availableCapacityDose2})
-        else:
-            print ("Center Id: %s does not have slots", centerId)
+        #else:
+        #    print ("Center Id: %s does not have slots", centerId)
 
 
     def isJSON (self, response):
