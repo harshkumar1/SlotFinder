@@ -26,6 +26,10 @@ class SlotFinder:
         if (minAgeLimit < 45):
             if ((self.Dose==1) and (availableCapacityDose1 > 0)):
                 availSlotObj = AvailableSlot(centerId, hospitalName, pinCode, minAgeLimit, date, vaccine, availableCapacity, availableCapacityDose1, availableCapacityDose2)
+                for availSlotObj in self.AvailableSlotsObj:
+                    if (availSlotObj.CenterId == centerId and availSlotObj.Date == date):
+                        print ("Already there in the list")
+                        return
                 self.AvailableSlotsObj.append(availSlotObj)
                 #self.AvailableSlots.append ({'name' :hospitalName, 'pincode' :pinCode, 'date' :date, 'min_age_limit' :minAgeLimit, 'available_capacity' :availableCapacity, 'available_capacity_dose1': availableCapacityDose1, 'available_capacity_dose2': availableCapacityDose2})
             elif ((self.Dose==2) and (availableCapacityDose2 > 0)):

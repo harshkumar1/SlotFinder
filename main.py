@@ -29,6 +29,7 @@ senderPasswd=config['SENDER']['PASSWD']
 smtpServer=config['SENDER']['SMTPSERVER']
 smtpPort=config['SENDER']['SMTPPORT']
 
+#HACK: Only selected entries
 if districtName == "MUM":
     emailAddresses=config['MUMBAI']['EMAILS']
     districtId=config['MUMBAI']['DISTRICTID']
@@ -54,11 +55,14 @@ elif (districtName == 'TEST'):
 #sys.stdout = output_file
 
 count=0
+slotFndr = SlotFinder(senderEmail, senderPasswd, smtpServer, smtpPort, districtId, emailAddresses, 1, districtName)
+notificationObj = Notification(emailAddresses, districtName)
+
 #while count < 3:
 while True:
     count = count + 1 
     print (count, " Run.", "Slots Availability Checked @ " + str(time.strftime('%d-%m-%Y %H:%M IST', time.localtime())))
-    slotFndr = SlotFinder(senderEmail, senderPasswd, smtpServer, smtpPort, districtId, emailAddresses, 2, districtName)
+    
     todayDate=str(datetime.datetime.today().strftime ('%d-%m-%Y'))
 
     day_delta = datetime.timedelta(days=7)
@@ -71,7 +75,12 @@ while True:
         queryDate = str((start_date + i*day_delta).strftime ('%d-%m-%Y'))
         print ("\t Querying for next 7 days starting " + queryDate)
         availSlotObj = slotFndr.getSlots(queryDate)
-    Notification(emailAddresses, districtName).notify(availSlotObj)
+    notificationObj.notify(availSlotObj)
     #slotFndr.notify()
     #exit(0)
-    time.sleep(90)
+    time.sleep(60)
+
+    #HACK : Every 30 mins clear all caches 
+    if ((count % 29) == 0):
+        slotFndr = SlotFinder(senderEmail, senderPasswd, smtpServer, smtpPort, districtId, emailAddresses, 1, districtName)
+        notificationObj = Notification(emailAddresses, districtName)

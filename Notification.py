@@ -17,7 +17,7 @@ class Notification:
             mailContent = ''
             if not availSlotObj.NotifiedAt:
                 #Has not been Notified, so add to mail content and set Notied At
-                centerDetails='Center Id: ' + str(availSlotObj.CenterId) + '\nAvailable Date: ' + availSlotObj.Date + '\nHospital Name: ' + availSlotObj.HospitalName + '\nPin Code: ' + str(availSlotObj.PinCode) + '\nVaccine: ' + availSlotObj.Vaccine + '\nTotal Available Capacity' + str(availSlotObj.AvailableCapacity) + '\nAvailable Capacity Dose-1: ' + str(availSlotObj.AvailableCapacityDose1) + '\nAvailable Capacity Dose-2: ' + str(availSlotObj.AvailableCapacityDose2) + '\n\n'
+                centerDetails='Center Id: ' + str(availSlotObj.CenterId) + '\nAvailable Date: ' + availSlotObj.Date + '\nHospital Name: ' + availSlotObj.HospitalName + '\nPin Code: ' + str(availSlotObj.PinCode) + '\nVaccine: ' + availSlotObj.Vaccine + '\nTotal Available Capacity: ' + str(availSlotObj.AvailableCapacity) + '\nAvailable Capacity Dose-1: ' + str(availSlotObj.AvailableCapacityDose1) + '\nAvailable Capacity Dose-2: ' + str(availSlotObj.AvailableCapacityDose2) + '\n\n'
                 mailContent = mailContent + centerDetails
                 #for recepientEmail in self.RecepientEmails:
                 for recepientEmail in self.RecepEMails.split(","):
