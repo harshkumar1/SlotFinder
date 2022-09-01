@@ -25,6 +25,7 @@ pipelines:
       - name: p1_s1
         type: Bash
         configuration:
+          nodepool: k8_pool
           inputResources:
             # Sets up step to be triggered when there are commit events to myFirstRepo
             - name: myFirstRepo
