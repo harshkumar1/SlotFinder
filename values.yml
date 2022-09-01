@@ -1,3 +1,5 @@
 myRepo:
-  gitProvider: my_github
+  #Name as provided in the JFrog Integrations
+  gitProvider: GitHub
+  #Path to values.yml & pipelines.yml
   path: harshkumar1/SlotFinder
