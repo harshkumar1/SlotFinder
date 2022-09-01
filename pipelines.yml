@@ -1,9 +1,9 @@
 --- 
 pipelines: 
   - 
-    configuration: 
-      nodepool: k8_pool
     name: my_first_pipeline
+    configuration:
+      nodepool: k8_pool
     steps: 
       - 
         configuration: 
